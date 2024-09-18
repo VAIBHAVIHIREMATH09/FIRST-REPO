@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+     <link >
+</head>
+<body>
+    <h1>Post Details</h1> 
+    <div class="profile-details">
+    <span th:each="post:${allPosts}">
+        
+        <strong>Photo:</strong>
+        <img th:if="${post.photoBase64}" th:src="'data:image/jpeg;base64,' + ${post.photoBase64}" alt="Profile Photo"/>
+     
+        
+       <strong>Caption:</strong>
+         <span th:text="${post.caption}"></span>
+         
+       <strong>Likes:</strong>
+         <span th:text="${post.likes}"></span>
+        <form action="/likePost">
+           <input type="text" name="id" th:text="${post.id}">
+           <input type="submit" value="Like">
+        </form>
+        
+        <form action="/addComment">
+            <textarea name="comments "></textarea>
+            <input type="submit">
+        </form>
+      
+       
+        </span>
+    </div>
+   
+</body>
+</html>
